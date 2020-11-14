@@ -1,7 +1,8 @@
 import React from "react";
 import './App.css';
-import { Test } from "./Components/Test"
+import TestComponent from "./Components/Test"
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 export class App extends React.Component {
   render() {
@@ -27,7 +28,7 @@ export class App extends React.Component {
                 </div>
               </Route>
               <Route path="/test" component={
-                Test
+                TestComponent
               } />
               
             </Switch>
