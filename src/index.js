@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './index.css';
 import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -15,17 +13,6 @@ const store = createStore(
 );
 
 //STORE
-
-
-//ACTION (increment)
-const increment = () => {
-  return {
-    type: 'INCREMENT'
-  }
-}
-
-//DISPATCH
-//store.dispatch(increment());
 
 
 

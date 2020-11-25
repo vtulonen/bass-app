@@ -4,3 +4,10 @@ export const increment = (num) => {
     payload: num
   };
 };
+
+export const decrement = (num) => {
+  return {
+    type: 'DECREMENT',
+    payload: num
+  };
+};

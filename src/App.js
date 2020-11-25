@@ -1,6 +1,7 @@
 import React from "react";
-import './App.css';
+import './style.css';
 import TestComponent from "./Components/Test"
+import Nav from "./Components/Nav"
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -9,17 +10,7 @@ export class App extends React.Component {
     return (
       <BrowserRouter>
       <div className="App">
-        <nav className="nav">
-              <ul>
-                <li className="nav-item">
-                  <Link to="/">Main Page</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/test">Test</Link>
-                </li>
-                
-              </ul>
-        </nav>
+        <Nav />
 
             <Switch>
               <Route path="/" exact>
