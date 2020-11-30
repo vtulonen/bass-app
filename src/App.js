@@ -1,9 +1,9 @@
 import React from "react";
 import './style.css';
-import TestComponent from "./Components/Test"
 import Nav from "./Components/Nav"
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import VideosContainer from "./Components/VideoPage/VideosContainer"
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+//import {connect} from 'react-redux';
 
 export class App extends React.Component {
   render() {
@@ -18,16 +18,15 @@ export class App extends React.Component {
                   <h1>Main page</h1>
                 </div>
               </Route>
-              <Route path="/test" component={
-                TestComponent
+              <Route path="/path1" component={
+                VideosContainer
+              } />
+               <Route path="/path2" component={
+                VideosContainer
               } />
               
             </Switch>
-          {/* <header className="App-header">
-            <Test/>
-            <Test/>
           
-          </header> */}
       </div>
       </BrowserRouter>
       
