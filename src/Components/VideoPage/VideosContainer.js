@@ -2,10 +2,10 @@
 //import {useSelector, useDispatch} from 'react-redux';
 import React, { Component } from 'react'
 
-import youtubeApi from '../../Api/ChannelData'
+import ChannelData from '../../Api/ChannelData'
 import Search from './Search';
 import VideoList from './VideoList';
-
+import PlaylistData from '../../Api/Playlist'
 
 
 export default class VideosContainer extends Component {
@@ -13,26 +13,29 @@ export default class VideosContainer extends Component {
   state = {
     data: [],
     title: '',
-    playlistId: ''
+    playlistId: '',
+    playlistItems: [],
   };
 
 
-  onSearch = async keyword => {
-    const response = await youtubeApi.get('', {
+
+  async getPlaylist()  {
+    const response = await PlaylistData.get('', {
       params: {
-        forUsername: keyword
+        playlistId: this.state.playlistId
       }
     });
+    console.log('response');
     console.log(response);
     this.setState({
-       data: response.data.items[0]
+      playlistItems: response.data.items
     });
-    console.log(this.state);
+
+    console.log(this.state)
   };
 
-
-  handleClick = async keyword => {
-    const response = await youtubeApi.get('', {
+  getChannelData = async keyword => {
+    const response = await ChannelData.get('', {
       params: {
         forUsername: keyword
       }
@@ -43,10 +46,10 @@ export default class VideosContainer extends Component {
        title: response.data.items[0].snippet.title,
        playlistId: response.data.items[0].contentDetails.relatedPlaylists.uploads
     });
-    console.log(this.state);
+    console.log(this.state)
+    this.getPlaylist()
   };
-
-
+  
   render() {
     
     return (
@@ -54,9 +57,10 @@ export default class VideosContainer extends Component {
         <div id="content">
           <div className="row">
             <div className="col s6">
-            <Search handleClick={this.handleClick} />
+            <Search handleClick={this.getChannelData} />
             
-            <VideoList playlistId={this.state.playlistId} />
+            <VideoList playlistItems={this.state.playlistItems} />
+            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/pQlImUd1mR8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
             </div>
             <div id="channel-data" className="col s6" />
           </div>
