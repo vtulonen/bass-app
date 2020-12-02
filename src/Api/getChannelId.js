@@ -1,14 +1,13 @@
 import axios from "axios";
 const API_KEY = "AIzaSyCewWMOH6KuJRw8c3LsLUjHJIX971omc7w";
 
-
-
 export default axios.create({
   
-  baseURL: "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet",
+  baseURL: "https://www.googleapis.com/youtube/v3/search?part=snippet",
   params: {
-    playlistId: '',
-    key: API_KEY
+    maxResults: 1,
+    q: '',
+    key: API_KEY,
     
   },
   headers: {}

@@ -30,24 +30,12 @@ class Search extends React.Component {
     return (
       <>
       <button onClick={this.handleClick}>pewdiepie</button>
-      <button onClick={this.handleClick}>bassbuzz</button>
+      <button onClick={this.handleClick}>pewdiepie</button>
+      <button onClick={this.handleClick}>TalkingBassVideo</button>
       <form onSubmit={this.onSubmit} className="search-form">
       <input className="submit" type="submit" value="submit" />
       </form>
 
-
-        {/* <form onSubmit={this.onSubmit} className="search-form">
-          <div className="form-controls">
-            <label>Search</label>
-            <input
-              id="video-search"
-              type="text"
-              value={this.state.title}
-              onChange={this.onSearchChanged}
-              placeholder="Enter Search Keyword"
-            />
-          </div>
-        </form> */}
       </>
     );
   }

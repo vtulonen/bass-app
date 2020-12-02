@@ -13,7 +13,7 @@ export class VideoList extends Component {
 
   render() {
     const items =  this.props.playlistItems.map((item) =>
-    <iframe width="560" height="315" src={`https://www.youtube.com/embed/${item.contentDetails.videoId}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="560" height="315" src={`https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
     );
     

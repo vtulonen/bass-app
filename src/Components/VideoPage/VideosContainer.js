@@ -2,53 +2,52 @@
 //import {useSelector, useDispatch} from 'react-redux';
 import React, { Component } from 'react'
 
-import ChannelData from '../../Api/ChannelData'
+import ChannelId from '../../Api/getChannelId'
 import Search from './Search';
 import VideoList from './VideoList';
 import PlaylistData from '../../Api/Playlist'
-
+import ChannelData from '../../Api/ChannelData'
+import getChannelId from '../../Api/getChannelId';
 
 export default class VideosContainer extends Component {
 
   state = {
-    data: [],
     title: '',
-    playlistId: '',
+    channelId: '',
     playlistItems: [],
   };
 
+  getChannelId = async keyword => { 
 
-
-  async getPlaylist()  {
-    const response = await PlaylistData.get('', {
+    // get channel id from user submit
+    const response_id = await ChannelId.get('', {
       params: {
-        playlistId: this.state.playlistId
+        q: keyword
       }
     });
-    console.log('response');
-    console.log(response);
-    this.setState({
-      playlistItems: response.data.items
-    });
+    
+    const channelId = response_id.data.items[0].id.channelId
+    const playlistId = 'UU' + channelId.substring(2); // Uploads playlistId is same as channelId with the second character switched to 'U' - so it's done manually here to save an api call from fetching the id
 
-    console.log(this.state)
-  };
-
-  getChannelData = async keyword => {
-    const response = await ChannelData.get('', {
+    
+    //get playlist items with playlistId
+    const response_playlist = await PlaylistData.get('', {
       params: {
-        forUsername: keyword
+        playlistId: playlistId
       }
     });
-    console.log(response);
+
+    console.log(response_playlist)
     this.setState({
-       data: response.data.items[0],
-       title: response.data.items[0].snippet.title,
-       playlistId: response.data.items[0].contentDetails.relatedPlaylists.uploads
+      playlistItems: response_playlist.data.items
     });
-    console.log(this.state)
-    this.getPlaylist()
+   
+
   };
+
+  
+
+
   
   render() {
     
@@ -57,7 +56,7 @@ export default class VideosContainer extends Component {
         <div id="content">
           <div className="row">
             <div className="col s6">
-            <Search handleClick={this.getChannelData} />
+            <Search handleClick={this.getChannelId} />
             
             <VideoList playlistItems={this.state.playlistItems} />
             {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/pQlImUd1mR8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
