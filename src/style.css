@@ -58,3 +58,23 @@ h1 {
 .App {
   text-align: center
 }
+
+
+/* Videos page  */
+
+.container {
+  margin: 0 10%;
+}
+
+.channel-info {
+  background-color: #fff;
+}
+
+
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+  grid-gap: 2em;
+}

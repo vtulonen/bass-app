@@ -7,19 +7,23 @@ import Search from './Search';
 import VideoList from './VideoList';
 import PlaylistData from '../../Api/Playlist'
 import ChannelData from '../../Api/ChannelData'
-import getChannelId from '../../Api/getChannelId';
+import DisplayChannelData from './DisplayChannelData'
 
 export default class VideosContainer extends Component {
+  constructor(props){ 
+    super(props) 
 
-  state = {
-    title: '',
-    channelId: '',
-    playlistItems: [],
-  };
+    this.state = {
+      channelId: '',
+      playlistItems: undefined,
+      channelData: undefined,
+    };
+  } 
+  
 
-  getChannelId = async keyword => { 
+  handleClick = async keyword => { 
 
-    // get channel id from user submit
+    // fetch channel id from user submit (search)
     const response_id = await ChannelId.get('', {
       params: {
         q: keyword
@@ -27,44 +31,49 @@ export default class VideosContainer extends Component {
     });
     
     const channelId = response_id.data.items[0].id.channelId
-    const playlistId = 'UU' + channelId.substring(2); // Uploads playlistId is same as channelId with the second character switched to 'U' - so it's done manually here to save an api call from fetching the id
 
+    // fetch channel data with channel id
+    const response_channel = await ChannelData.get('', {
+      params: {
+       id: channelId
+      }
+    });
+
+
+    const playlistId = response_channel.data.items[0].contentDetails.relatedPlaylists.uploads
     
-    //get playlist items with playlistId
+    
+    
+    
+    //fetch playlist items with playlistId
     const response_playlist = await PlaylistData.get('', {
       params: {
         playlistId: playlistId
       }
     });
 
-    console.log(response_playlist)
+    
     this.setState({
-      playlistItems: response_playlist.data.items
+      playlistItems: response_playlist.data.items,
+      channelData: response_channel.data.items[0],
     });
    
 
-  };
+   };
 
   
 
 
   
-  render() {
-    
+   render() {
+
+    console.log(this.state)
+
     return (
       <div className="container">
-        <div id="content">
-          <div className="row">
-            <div className="col s6">
-            <Search handleClick={this.getChannelId} />
-            
-            <VideoList playlistItems={this.state.playlistItems} />
-            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/pQlImUd1mR8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-            </div>
-            <div id="channel-data" className="col s6" />
-          </div>
-          <div className="row" id="video-container" />
-        </div>
+        <Search handleClick={this.handleClick} />
+        {  this.state.channelData && <DisplayChannelData data={this.state.channelData} /> }
+        { this.state.playlistItems && <VideoList playlistItems={this.state.playlistItems} /> }
       </div>
     )
   }

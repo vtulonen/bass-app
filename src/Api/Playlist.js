@@ -8,6 +8,7 @@ export default axios.create({
   baseURL: "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet",
   params: {
     playlistId: '',
+    maxResults: 10,
     key: API_KEY
     
   },
