@@ -5,14 +5,30 @@ import React from "react";
 class Search extends React.Component {
   constructor(props){ 
     super(props) 
-    this.state = { search: "" };
+    this.state = { 
+      search: "",
+      channelId: ""
+    };
   
     this.handleClick = this.handleClick.bind(this) 
   } 
   
   onSubmit = event => {
     event.preventDefault();
-    this.props.handleClick(this.state.search);
+    let channelId;
+    switch (this.state.search) {
+      case "Scott's Bass Lessons":
+        channelId = 'UCWTj3vCqkQIsrTGSm4kM34g';
+        break;
+      case "BassBuzz":
+        channelId = 'UCeD9_tDVA1wvqv1IF9QyP-A';
+        break;
+      case "TalkingBass":
+        channelId = 'UCDfStxwji-22A_bvY280UIg'
+    }
+
+    this.props.handleClick(channelId);
+
   };
 
 
@@ -25,7 +41,7 @@ class Search extends React.Component {
   render() {
     return (
       <>
-      <button onClick={this.handleClick}>Scotts Bass Lessons</button>
+      <button onClick={this.handleClick}>Scott's Bass Lessons</button>
       <button onClick={this.handleClick}>BassBuzz</button>
       <button onClick={this.handleClick}>TalkingBass</button>
       <form onSubmit={this.onSubmit} className="search-form">

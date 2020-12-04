@@ -20,15 +20,18 @@ export default class VideosContainer extends Component {
 
   handleClick = async keyword => { 
 
-    // fetch channel id from user submit (search)
-    const response_id = await youtubeApi.get('/search', {
-      params: {
-        part: 'snippet',
-        q: keyword,
-      }
-    });
+    console.log(keyword)
     
-    const channelId = response_id.data.items[0].id.channelId
+    // const response_id = await youtubeApi.get('/search', {
+    //   params: {
+    //     part: 'snippet',
+    //     q: keyword,
+    //   }
+    // });
+
+
+    // get channel id from (search) component
+    const channelId = keyword
 
     // fetch channel data with channel id
     const response_channel = await youtubeApi.get('/channels', {

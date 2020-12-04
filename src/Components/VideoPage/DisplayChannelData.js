@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import youtubeApi from '../../Api/Youtube'
 import DisplayUploads from './DisplayUploads';
+import DisplayPlaylists from './DisplayPlaylists';
 
 export class DisplayChannelData extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export class DisplayChannelData extends Component {
 
     this.state = {
       uploadsList: undefined,
-      playlistId: this.props.data.contentDetails.relatedPlaylists.uploads
+      allPlaylists: undefined,
+      uploadsPlaylistId: this.props.data.contentDetails.relatedPlaylists.uploads
     };
   }
 
@@ -18,16 +20,36 @@ export class DisplayChannelData extends Component {
    handleClickLatest = async () => {
    
     
-    const playlistId = this.props.data.contentDetails.relatedPlaylists.uploads
+    const uploadsPlaylistId = this.props.data.contentDetails.relatedPlaylists.uploads
     const response_uploadsList = await youtubeApi.get('/playlistItems', {
       params: {
         part: 'snippet',
-        playlistId: playlistId
+        uploadsPlaylistId: uploadsPlaylistId
       }
     });
 
     this.setState({
       uploadsList: response_uploadsList.data.items,
+    });
+  }
+
+
+  handleClickPlaylists = async () => {
+   
+    
+    const channelId = this.props.data.id
+    console.log(channelId)
+    const response = await youtubeApi.get('/playlists', {
+      params: {
+        part: 'snippet',
+        channelId: channelId,
+        maxResults: 25
+      }
+    });
+
+    console.log(response.data.items)
+    this.setState({
+      allPlaylists: response.data.items
     });
   }
 
@@ -56,9 +78,11 @@ export class DisplayChannelData extends Component {
       <div className="buttons">
         <a className="btn" href={channelUrl}>View Channel</a>
         <button onClick={this.handleClickLatest}>Show latest videos</button>
+        <button onClick={this.handleClickPlaylists}>Show playlists</button>
       </div>
       <div>
       { this.state.uploadsList && <DisplayUploads uploadsList={this.state.uploadsList} /> }
+      { this.state.allPlaylists && <DisplayPlaylists playlists={this.state.allPlaylists} /> }
       </div>
 
       </>
