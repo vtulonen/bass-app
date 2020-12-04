@@ -5,15 +5,28 @@ export class DisplayPlaylists extends Component {
     super(props);
    console.log(this.props)
   }
+
+
+  handleClick = (event) => {
+    console.log(event.currentTarget.getAttribute("videoid"))
+  }
+
+
   render() {
-    const items =  this.props.playlists.map((item, index) =>
-      <p>{item.snippet.title}</p>
-    
+    const playlists =  this.props.playlists.map((item, index) =>
+    <div onClick={this.handleClick} className="playlists__item" key={index} videoid={item.id}>
+      <a>{item.snippet.title}</a>
+      <img src={item.snippet.thumbnails.medium.url}/>
+    </div>
+      
     );
 
+
+
     return (
-      <div>
-        {items}
+      <div className="playlists">
+        {playlists}
+       
       </div>
     )
   }
