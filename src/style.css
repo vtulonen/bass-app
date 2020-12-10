@@ -37,17 +37,79 @@ table {
   box-sizing: border-box
 }
 
+/*^RESET^*/
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
 html, body {
   width: 100vw;
   height: 100vh
 }
 
-.Nav__container {
-  display: flex;
-  flex-direction: row
+.nav__container {
+ background-color: #1F1F1F;
+ padding: 0 20%;
 }
 
-.Nav__link {
+.nav__right {
+  
+}
+
+.nav__logo {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(216deg) brightness(102%) contrast(104%);
+}
+
+.nav__item-wrapper {
+  display: grid;
+  grid-template-columns: 1fr .5fr 1fr;
+  place-items: center;
+  height: 200px;
+  
+}
+
+.nav__item {
+  display: grid;
+  place-items: center;
+  padding: 5px 10px;
+  max-width: 250px;
+  height: 100px;
+  text-decoration: none;
+  
+  border: 1px solid rgb(50, 50, 50);
+  position: relative;
+  overflow: hidden;
+ 
+  
+}
+
+.nav__item a {
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.nav__item:hover {
+  box-shadow: 1px 1px 15px 5px rgb(235,155,45);
+  
+}
+.nav__logo:hover {
+  width: 120%;
+  height: 120%;
+  filter: invert(61%) sepia(95%) saturate(421%) hue-rotate(344deg) brightness(96%) contrast(92%);
+}
+
+
+
+
+.nav__item:hover:before {
+  left: 100%;
+}
+
+
+.landing-container {
+  height: 100%;
+
   
 }
 
@@ -55,16 +117,20 @@ h1 {
   color: blue
 }
 
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 .App {
-  text-align: center
+  text-align: center;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 
 /* Videos page  */
-
-.container {
-  margin: 0 10%;
-}
 
 .channel-info {
   background-color: #fff;
@@ -79,15 +145,6 @@ h1 {
   grid-gap: 2em;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  padding: 5px 10px;
-  background-color: #EEEEEE;
-  border: 1px solid #DDDDDD;
-}
 
 .hidden { 
   display: none; 

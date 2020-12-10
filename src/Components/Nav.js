@@ -5,22 +5,20 @@ import icon from '../images/bass-icon.svg'
 function Nav (){
     
     return (
-      <nav className="Nav">
-        <div className="Nav__container">
-          <Link to="/" className="Nav__brand">
-            <img src= {icon} className="Nav__logo" alt="menu icon"/>
+      <nav className="nav">
+        <div className="nav__container">
+          <div className="nav__right">
+            <ul className="nav__item-wrapper">
+              <li className="nav__item">
+                <Link className="nav__link" to="/channels">Bass Channels</Link>
+              </li>
+              <li>
+              <Link to="/" className="nav__brand">
+            <img src= {icon} className="nav__logo" alt="menu icon"/>
           </Link>
-
-          <div className="Nav__right">
-            <ul className="Nav__item-wrapper">
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/test">test</Link>
               </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/path2">Link 2</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/path3">Link 3</Link>
+              <li className="nav__item">
+                <Link className="nav__link" to="/daily">Video of the Day</Link>
               </li>
             </ul>
           </div>
