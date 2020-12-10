@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 import Search from './Search';
 import DisplayChannelData from './DisplayChannelData'
 import youtubeApi from '../../Api/Youtube'
-
+import DisplayVideos from './DisplayVideos'
+import DisplayPlaylists from './DisplayPlaylists'
 
 export default class VideosContainer extends Component {
   constructor(props){ 
@@ -12,25 +13,31 @@ export default class VideosContainer extends Component {
 
     this.state = {
       channelId: '',
-      playlistItems: undefined,
+      allPlaylists: undefined,
       channelData: undefined,
+      uploadsList: undefined,
     };
   } 
+
+
+  handleUploadsCallback = (props) =>{
+    
+    this.setState({
+      uploadsList: props,
+      allPlaylists: undefined,
+    })
+  }
+
+  handlePlaylistsCallback = (props) =>{
+    this.setState({
+      allPlaylists: props,
+      uploadsList: undefined,
+    })
+  }
   
 
-  handleClick = async keyword => { 
-
+  handleSubmit = async keyword => { 
     console.log(keyword)
-    
-    // const response_id = await youtubeApi.get('/search', {
-    //   params: {
-    //     part: 'snippet',
-    //     q: keyword,
-    //   }
-    // });
-
-
-    // get channel id from (search) component
     const channelId = keyword
 
     // fetch channel data with channel id
@@ -40,28 +47,31 @@ export default class VideosContainer extends Component {
         id: channelId
       }
     });
- 
-
     this.setState({
       channelData: response_channel.data.items[0],
     });
-   
-
    };
 
   
-
-
-  
    render() {
-
-    console.log(this.state.playlistItems)
-
-    return (
+      return (
+      
       <div className="container">
-        <Search handleClick={this.handleClick} />
-        {  this.state.channelData && <DisplayChannelData data={this.state.channelData} /> }
-        {/* { this.state.playlistItems && <VideoList playlistItems={this.state.playlistItems} /> } */}
+        <Search handleClick={this.handleSubmit} />
+
+        {  this.state.channelData && <DisplayChannelData data={this.state.channelData} 
+
+        uploadsCallback = {this.handleUploadsCallback} 
+        playlistsCallback = {this.handlePlaylistsCallback}
+        /> }
+        
+        {this.state.uploadsList && (
+            <DisplayVideos videosList={this.state.uploadsList} listName='Latest Videos' />
+        )}
+        {this.state.allPlaylists && (
+            <DisplayPlaylists playlists={this.state.allPlaylists} 
+            listName='All Playlists' />
+          )}
       </div>
     )
   }

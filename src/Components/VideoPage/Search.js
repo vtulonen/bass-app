@@ -15,7 +15,7 @@ class Search extends React.Component {
   
   onSubmit = event => {
     event.preventDefault();
-    let channelId;
+    let channelId = "";
     switch (this.state.search) {
       case "Scott's Bass Lessons":
         channelId = 'UCWTj3vCqkQIsrTGSm4kM34g';
@@ -27,7 +27,14 @@ class Search extends React.Component {
         channelId = 'UCDfStxwji-22A_bvY280UIg'
     }
 
-    this.props.handleClick(channelId);
+    
+    if (channelId !== "") {
+      this.props.handleClick(channelId);
+    }  else {
+      alert('Please select a channel first');
+    }
+      
+    
 
   };
 
