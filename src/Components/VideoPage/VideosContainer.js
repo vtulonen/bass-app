@@ -56,7 +56,7 @@ export default class VideosContainer extends Component {
    render() {
       return (
       
-      <div className="container">
+      <div className="channel-page-container">
         <Search handleClick={this.handleSubmit} />
 
         {  this.state.channelData && <DisplayChannelData data={this.state.channelData} 

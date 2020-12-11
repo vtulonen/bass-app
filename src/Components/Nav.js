@@ -12,7 +12,7 @@ function Nav (){
               <li className="nav__item">
                 <Link className="nav__link" to="/channels">Bass Channels</Link>
               </li>
-              <li>
+              <li className="nav__item-mod">
               <Link to="/" className="nav__brand">
             <img src= {icon} className="nav__logo" alt="menu icon"/>
           </Link>
