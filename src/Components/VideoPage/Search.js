@@ -43,17 +43,22 @@ class Search extends React.Component {
   handleClick = (event) => {
     const _search = event.target.innerText;
     this.setState({ search: _search });
+    
   }
 
   render() {
     return (
       <>
-      <button onClick={this.handleClick}>Scott's Bass Lessons</button>
-      <button onClick={this.handleClick}>BassBuzz</button>
-      <button onClick={this.handleClick}>TalkingBass</button>
-      <form onSubmit={this.onSubmit} className="search-form">
-      <input className="submit" type="submit" value="submit" />
+      <div className="btn-container">
+      <button className="btn" onClick={this.handleClick}>Scott's Bass Lessons</button>
+        <button className="btn" onClick={this.handleClick}>BassBuzz</button>
+        <button className="btn" onClick={this.handleClick}>TalkingBass</button>
+        <form onSubmit={this.onSubmit} className="submit-container">
+      <input className="btn btn-submit" type="submit" value="View Channel" />
       </form>
+      </div>
+        
+      
 
       </>
     );

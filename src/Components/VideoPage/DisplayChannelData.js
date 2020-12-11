@@ -56,7 +56,8 @@ export class DisplayChannelData extends Component {
   render() {
     const { data } = this.props;
     const title = data.snippet.title;
-    const description = data.snippet.description;
+    const description = data.snippet.description.split('.');
+    const shortDescription = description[0];
     const subscribers = data.statistics.subscriberCount;
     const videoCount = data.statistics.videoCount;
     const viewCount = data.statistics.viewCount;
@@ -66,27 +67,19 @@ export class DisplayChannelData extends Component {
       <>
         <div className="channel-info-container">
           <ul className="channel-info">
-            <li className="channel-info__item">{title}</li>
+            <li className="channel-info__item"><em>{title}</em></li>
             <li className="channel-info__item">Subscribers: {subscribers}</li>
             <li className="channel-info__item">Videos: {videoCount}</li>
             <li className="channel-info__item">Views: {viewCount}</li>
           </ul>
-          <p>{description}</p>
+          <p className="channel-description">{shortDescription}</p>
         </div>
-        <div className="buttons">
+        <div className="channel-info__buttons btn-container">
+          <button className="btn" onClick={this.handleClickLatest}>Show Latest Videos</button>
+          <button className="btn" onClick={this.handleClickPlaylists}>Show Playlists</button>
           <a className="btn" href={channelUrl}>
-            View Channel
+            Visit Channel
           </a>
-          <button onClick={this.handleClickLatest}>Show latest videos</button>
-          <button onClick={this.handleClickPlaylists}>Show playlists</button>
-        </div>
-        <div>
-          {/* {this.state.uploadsList && (
-            <DisplayVideos videosList={this.state.uploadsList} listName='Latest Videos' />
-          )} */}
-          {/* {this.state.allPlaylists && (
-            <DisplayPlaylists playlists={this.state.allPlaylists} listName='All Playlists' />
-          )} */}
         </div>
       </>
     );
