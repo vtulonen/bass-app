@@ -10,6 +10,7 @@ export class DisplayVideos extends Component {
   render() {
     const items =  this.props.videosList.map((item, index) =>
     <div class="video">
+      <h3 className="video__title">{item.snippet.title}</h3>
       <iframe key={index} width="100%" height="100%" src={`https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`} frameBorder="0" allowFullScreen></iframe>
     </div>
     

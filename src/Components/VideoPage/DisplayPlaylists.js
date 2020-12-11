@@ -39,9 +39,9 @@ export class DisplayPlaylists extends Component {
     
     
     const playlists =  this.props.playlists.map((item, index) =>
-    <div onClick={this.handleClick} className="playlists__item" key={index} playlistid={item.id} title={item.snippet.title}>
-      <a>{item.snippet.title}</a>
-      <img src={item.snippet.thumbnails.medium.url}/>
+    <div onClick={this.handleClick} className="playlists-item" key={index} playlistid={item.id} title={item.snippet.title}>
+      <h3 className="playlist-item__title">{item.snippet.title}</h3>
+      <img className="playlist-item__thumbnail" src={item.snippet.thumbnails.medium.url}/>  
     </div>
       
     );
@@ -49,15 +49,15 @@ export class DisplayPlaylists extends Component {
 
 
     return (
-      <>
-      <div className="playlist-videos">
-        {  this.state.playlistItems && <DisplayVideos videosList={this.state.playlistItems} listName={this.state.playlistTitle}/> }
-      </div>
       <div className="playlists">
-      {playlists}
+      
+        {  this.state.playlistItems && <DisplayVideos videosList={this.state.playlistItems} listName={this.state.playlistTitle}/> }
+      
+        {playlists}
+
       </div>
 
-      </>
+     
     )
   }
 }
