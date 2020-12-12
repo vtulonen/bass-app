@@ -1,22 +1,25 @@
 import React from "react";
 
+// Display buttons for user
+// on submit the selected channels
+// channelid is set as props to callback
 
-
-class Search extends React.Component {
+class SelectChannel extends React.Component {
   constructor(props){ 
     super(props) 
     this.state = { 
-      search: "",
+      channel: "",
       channelId: ""
     };
   
     this.handleClick = this.handleClick.bind(this) 
   } 
   
+  // changes channelId based on user selected channel
   onSubmit = event => {
     event.preventDefault();
     let channelId = "";
-    switch (this.state.search) {
+    switch (this.state.channel) {
       case "Scott's Bass Lessons":
         channelId = 'UCWTj3vCqkQIsrTGSm4kM34g';
         break;
@@ -38,11 +41,10 @@ class Search extends React.Component {
 
   };
 
-
-
+  // set buttons inner text as state
   handleClick = (event) => {
-    const _search = event.target.innerText;
-    this.setState({ search: _search });
+    const _channel = event.target.innerText;
+    this.setState({ channel: _channel });
     
   }
 
@@ -65,4 +67,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default SelectChannel;

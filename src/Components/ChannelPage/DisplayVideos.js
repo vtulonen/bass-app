@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-
+/* 
+  Map videos from videolist (prop) to a div to display each video in return
+*/
 export class DisplayVideos extends Component {
   constructor(props) {
     super(props);
-   console.log(this.props)
   }
 
   render() {
@@ -13,8 +14,6 @@ export class DisplayVideos extends Component {
       <h3 className="video__title">{item.snippet.title}</h3>
       <iframe key={index} width="100%" height="100%" src={`https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`} frameBorder="0" allowFullScreen></iframe>
     </div>
-    
-    
     );
     
 

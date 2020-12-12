@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import youtubeApi from "../../Api/Youtube";
 import DisplayVideos from "./DisplayVideos";
+
+/*
+
+Displays playlist thumbnails and names according to given channelid
+When a playlist is clicked, videos for the playlist are fetched from youtube api
+
+*/
+
 export class DisplayPlaylists extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +34,7 @@ export class DisplayPlaylists extends Component {
     });
 
     this.setState({
+      //Setting state in handle function to only display the videos after they are fetched
       playlistItems:  response.data.items,
       playlistTitle: playlistTitle
     })
@@ -36,7 +45,8 @@ export class DisplayPlaylists extends Component {
   
 
   render() {
-    
+    // map each playlist item into a div to display in return
+    // onClick function for above handlefunction
     
     const playlists =  this.props.playlists.map((item, index) =>
     <div onClick={this.handleClick} className="playlists-item" key={index} playlistid={item.id} title={item.snippet.title}>
@@ -51,8 +61,10 @@ export class DisplayPlaylists extends Component {
     return (
       <div className="playlists">
       
+      {/* Only display this after a playlist is clicked */}
         {  this.state.playlistItems && <DisplayVideos videosList={this.state.playlistItems} listName={this.state.playlistTitle}/> }
       
+      {/* Display this first */}
         {playlists}
 
       </div>

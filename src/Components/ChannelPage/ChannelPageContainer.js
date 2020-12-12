@@ -1,11 +1,17 @@
-
-//import {useSelector, useDispatch} from 'react-redux';
 import React, { Component } from 'react'
-import Search from './Search';
+import SelectChannel from './SelectChannel';
 import DisplayChannelData from './DisplayChannelData'
 import youtubeApi from '../../Api/Youtube'
 import DisplayVideos from './DisplayVideos'
 import DisplayPlaylists from './DisplayPlaylists'
+
+/*
+
+Displays Select channel component, that sends channelId as callback, then fetches channeldata from youtube api
+
+Displays channelData where user can select to preview latest videos or playlists -> callback + handle functions sets user selection to state -> if state is set, renders desired component
+
+*/
 
 export default class VideosContainer extends Component {
   constructor(props){ 
@@ -57,14 +63,18 @@ export default class VideosContainer extends Component {
       return (
       
       <div className="channel-page-container">
-        <Search handleClick={this.handleSubmit} />
+        <SelectChannel handleClick={this.handleSubmit} />
 
+        {/* DisplayChannelData will render after channel is selected in SelectChannel and callback sets the state */}
+        
         {  this.state.channelData && <DisplayChannelData data={this.state.channelData} 
 
         uploadsCallback = {this.handleUploadsCallback} 
         playlistsCallback = {this.handlePlaylistsCallback}
         /> }
         
+
+        {/* Components below will only render if a callback is done from DisplayChannelData */}
         {this.state.uploadsList && (
             <DisplayVideos videosList={this.state.uploadsList} listName='Latest Videos' />
         )}

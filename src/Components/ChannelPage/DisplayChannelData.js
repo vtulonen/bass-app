@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import youtubeApi from "../../Api/Youtube";
-import DisplayVideos from "./DisplayVideos";
-import DisplayPlaylists from "./DisplayPlaylists";
 
+// Renders channel data and
+// Fetches channel latest uploads or playlists 
+// depending on user input
 
-
-// TODO hide other components when not needed
 export class DisplayChannelData extends Component {
   constructor(props) {
     super(props);
-    console.log("constr props");
-    console.log(this.props);
-
-    this.state = {
-      uploadsList: undefined,
-      allPlaylists: undefined,
-    };
   }
 
+
+  //  Handle functions for user input on button click
+  // Fetches data from youtubeApi
   handleClickLatest = async () => {
     const uploadsPlaylistId = this.props.data.contentDetails.relatedPlaylists.uploads;
     const response_uploadsList = await youtubeApi.get("/playlistItems", {
@@ -27,10 +22,10 @@ export class DisplayChannelData extends Component {
       },
     });
 
+
+    // set fetched data as props for callback
     this.props.uploadsCallback(response_uploadsList.data.items);
-    this.setState({
-      uploadsList: response_uploadsList.data.items,
-    });
+    
   };
 
   handleClickPlaylists = async () => {
@@ -44,12 +39,9 @@ export class DisplayChannelData extends Component {
       },
     });
 
+    // set fetched data as props for callback
     this.props.playlistsCallback(response.data.items);
 
-    console.log(response.data.items);
-    this.setState({
-      allPlaylists: response.data.items,
-    });
   };
   
 

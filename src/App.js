@@ -2,10 +2,13 @@ import React from "react";
 import './style.css';
 import Nav from "./Components/Nav"
 import LandingPage from './Components/LandingPage'
-import VideosContainer from "./Components/VideoPage/VideosContainer"
+import ChannelPageContainer from "./Components/ChannelPage/ChannelPageContainer"
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import DailyVideoPage from "./Components/DailyVideoPage";
-//import {connect} from 'react-redux';
+
+/*
+  Applikaation pääsivu, jossa  browser router eri näkymiin
+*/
 
 export class App extends React.Component {
   render() {
@@ -15,16 +18,12 @@ export class App extends React.Component {
         <Nav />
             <Switch>
               <Route path="/" exact>
-                
                 <LandingPage />
-
               </Route>
-              <Route path="/channels" component={
-                VideosContainer
-              } />
-               <Route path="/daily" component={
-                DailyVideoPage
-              } />
+
+              <Route path="/channels" component={ ChannelPageContainer } />
+
+               <Route path="/daily" component={ DailyVideoPage } />
             </Switch>
           
       </div>
