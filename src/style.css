@@ -76,7 +76,7 @@ body, html {
   margin: 0 auto;
   padding: 0;
   background: rgb(31,31,31);
-  background: linear-gradient(180deg, rgba(31,31,31,1) 40%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(180deg, rgba(31,31,31,1) 40%, var(--light-gray) 100%);
 }
 
 /* Typography */
@@ -157,7 +157,7 @@ em {
 
 .nav__item-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   /* height: 200px; */
   padding: 3rem;
@@ -168,14 +168,15 @@ em {
   display: grid;
   place-items: center;
   padding: 5px 10px;
-  min-width: 150px;
+  min-width: 120px;
   height: 100px;
   text-decoration: none;
-  
   border: 1px solid rgb(235,155,45);
-  overflow: hidden;
- 
   
+}
+
+.nav__item-mod {
+  margin: 0 3rem;
 }
 
 .nav__item a {
@@ -217,7 +218,7 @@ a {
   place-items: center;
   padding: 3rem .5rem;
   background: rgb(31,31,31);
-  background: linear-gradient(180deg, rgba(31,31,31,1) 50%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(180deg, rgba(31,31,31,1) 50%, var(--light-gray) 100%);
 
 }
 
@@ -388,6 +389,12 @@ a {
     font-size: 2rem;
     margin: 1rem;
   }
+
+ .nav__item-mod {
+    margin: 1rem;
+  }
+
+  
 
   .nav__item-wrapper {
     padding: 2rem 0;
