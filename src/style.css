@@ -85,22 +85,22 @@ body, html {
 }
 
 h1 {
-  font-size: 4rem;
-  font-family: 'Patrick Hand', cursive;
+  font-size: 3rem;
+  font-family: var(--text_font);
   color: var(--main-orange);
 }
 
 h2 {
   font-size: 3rem;
-  font-family: 'Patrick Hand', cursive;
+  font-family: var(--text_font);
   color: var(--main-orange);
   padding: 50px 50px 25px;
 }
 
-p .main {
+.main {
   font-size: 1.5rem;
-  color: white;
-  font-family: 'Patrick Hand', cursive;
+  color: var(--white);
+  
 }
 
 em {
@@ -126,10 +126,17 @@ em {
 
 
 .landing-text {
-  margin-top: 5rem;
-  height: 200px;
+  margin: 0 auto;
   grid-gap: 2em;
+  background: var(--main-black);
+  max-width: 75%;
+  padding: 2rem;
+  box-shadow: 1px 1px 15px 5px rgb(235,155,45);
 }
+
+/* .landing-text > div {
+  background-color: #000;
+} */
 
 .nav__container {
  background-color: #1F1F1F;
@@ -169,7 +176,7 @@ em {
   height: 100px;
   text-decoration: none;
   
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid rgb(235,155,45);
   position: relative;
   overflow: hidden;
  
@@ -275,17 +282,18 @@ a {
   width: 600px;
   height: 400px;
   margin: 1rem;
-  padding: 2em 2em 3em;
+  padding: 2em 2em 4em;
   border-radius: 5px;
   background-color: var(--main-orange);
 }
 
 .video > iframe {
   border-radius: 5px;
+  
 }
 .video__title {
   font-size: 1rem;
-  padding: 0 1rem 1rem;
+  padding-bottom: 1em;
 }
 
 /* Playlists*/

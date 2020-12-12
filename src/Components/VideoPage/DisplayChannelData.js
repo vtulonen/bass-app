@@ -77,7 +77,7 @@ export class DisplayChannelData extends Component {
         <div className="channel-info__buttons btn-container">
           <button className="btn" onClick={this.handleClickLatest}>Show Latest Videos</button>
           <button className="btn" onClick={this.handleClickPlaylists}>Show Playlists</button>
-          <a className="btn" href={channelUrl}>
+          <a className="btn" href={channelUrl} target="_blank">
             Visit Channel
           </a>
         </div>
