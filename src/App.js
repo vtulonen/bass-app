@@ -4,6 +4,7 @@ import Nav from "./Components/Nav"
 import LandingPage from './Components/LandingPage'
 import VideosContainer from "./Components/VideoPage/VideosContainer"
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import DailyVideoPage from "./Components/DailyVideoPage";
 //import {connect} from 'react-redux';
 
 export class App extends React.Component {
@@ -22,7 +23,7 @@ export class App extends React.Component {
                 VideosContainer
               } />
                <Route path="/daily" component={
-                VideosContainer
+                DailyVideoPage
               } />
             </Switch>
           
