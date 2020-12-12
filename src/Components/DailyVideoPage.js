@@ -32,7 +32,7 @@ export class DailyVideoPage extends Component {
 
   render() {
     return (
-      <div className="center">
+      <div className="center daily-container">
         <h2>Here's one of the latest bass related video from youtube</h2>
         <div className="video">
           <h3 className="video__title">{this.state.videoTitle}</h3>

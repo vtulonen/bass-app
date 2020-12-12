@@ -6,8 +6,8 @@ function Nav (){
     
     return (
       <nav className="nav">
-        <div className="nav__container">
-          <div className="nav__right">
+        
+          
             <ul className="nav__item-wrapper">
               <li className="nav__item">
                 <Link className="nav__link" to="/channels">Bass Channels</Link>
@@ -21,8 +21,8 @@ function Nav (){
                 <Link className="nav__link" to="/daily">Video of the Day</Link>
               </li>
             </ul>
-          </div>
-        </div>
+          
+        
       </nav>
     );
 }
