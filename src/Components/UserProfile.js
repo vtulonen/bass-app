@@ -21,9 +21,10 @@ const UserProfile = (props) => {
   
   return (
     <div className="user">
-      
+        <h2 className="user__greeting">Welcome,</h2>
         <h2 className="user__name">{displayName}</h2>
         <h3 className="user__email">{email}</h3>
+        <p className="user__prompt">Use the navigation menu to start exploring!</p>
         <button className = "signout" onClick={handleSignOut}>Sign out</button>
       
       {/* <Link to="/" className = "signOut btn" onClick = {() => {auth.signOut()}}>Sign out</Link> */}
