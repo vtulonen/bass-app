@@ -7,11 +7,18 @@ export class Ui extends Component {
     startFirebaseUI ('#firebaseui')
   }
 
+
+  handleSignOut = () => {
+    auth.signOut();
+    
+
+  }
+
   render() {
     return (
       <div>
          <div id="firebaseui"></div>
-         <button className = "signout" onClick = {() => {auth.signOut()}}>Sign out</button>
+         {/* <button className = "signout" onClick={this.handleSignOut}>Sign out</button> */}
       </div>
     )
   }

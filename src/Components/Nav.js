@@ -20,6 +20,9 @@ function Nav (){
               <li className="nav__item">
                 <Link className="nav__link" to="/daily">Video of the Day</Link>
               </li>
+              {/* <li className="nav__item">
+                <Link className="nav__link" to="/profile">Profile</Link>
+              </li> */}
             </ul>
           
         

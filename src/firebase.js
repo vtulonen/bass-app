@@ -23,31 +23,34 @@ export const auth = firebase.auth();
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 const uiConfig = ({
-  signInSuccessUrl: '/',
+  // signInSuccessUrl: '/',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID
   ],
 
   callbacks: {
-    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+    signInSuccessWithAuthResult: function(authResult) {
+      // ui.reset();
+      // document.getElementById('firebaseui').style.display = 'none';
       console.log(authResult);
+      
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
-      return true;
+      return false;
     }
   }
 
   // Other config options...
 
 })
-ui.start('#firebaseui', {
+// ui.start('#firebaseui', {
   
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ],
-  // Other config options...
-});
+//   signInOptions: [
+//     firebase.auth.EmailAuthProvider.PROVIDER_ID
+//   ],
+//   // Other config options...
+// });
 
 const startFirebaseUI = function (elementId) {
   console.log("starting fbase");
