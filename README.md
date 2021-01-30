@@ -4,7 +4,7 @@
 
 Goal for the project was to get to know react and create a distraction free way to browse bass related videos from youtube
 
-#!!
+# !!
 Project APIs are no longer valid due to security reasons so the project can't be tested without changing the api confifuration for your self.
 
 # Uses Youtube Data API to fetch videos and playlists of Bassist youtubers
